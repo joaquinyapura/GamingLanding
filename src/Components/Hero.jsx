@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -10,7 +11,7 @@ export const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setloadedVideos] = useState(0);
 
-  const totalVideos = 3;
+  const totalVideos = 4;
   const nextVideo = useRef(null);
 
   const upcommingVideoIndex = (currentIndex % totalVideos) + 1;
@@ -55,6 +56,25 @@ export const Hero = () => {
     }
   );
 
+  useGSAP(() => {
+    gsap.set("#video", {
+      clipPath: "polygon(8% 0, 94% 0, 100% 100%, 0% 100%)",
+      borderRadius: "0 0 20% 20%",
+    });
+
+    gsap.from("#video", {
+      clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)",
+      borderRadius: "0 0 0% 0%",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#video",
+        start: "center center",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+  });
+
   return (
     <div
       id="video"
@@ -96,12 +116,12 @@ export const Hero = () => {
           onLoadedData={handleVideoLoaded}
         />
       </div>
-      <h1 className="font-zentry absolute z-50 bottom-5 right-5 text-blue-75 text-6xl">
+      <h1 className="special-font absolute z-20 bottom-5 right-5 text-8xl lg:text-[200px] text-white ">
         G<b>a</b>mming
       </h1>
       <div className="absolute left-0 top-0 z-40 size-full">
         <div className="mt-24 px-5 sm:px-10">
-          <h1 className="font-zentry text-8xl text-blue-100">
+          <h1 className="font-zentry text-8xl text-blue-100 lg:text-[200px]">
             Redifi<b>n</b>e
           </h1>
           <p className="mb-5 font-robert-regular text-xl text-blue-100">

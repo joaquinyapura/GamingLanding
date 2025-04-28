@@ -50,14 +50,38 @@ body {
   --color-yellow-300: #edff66;
 }
 
-@utility mask-clip-path {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
 @utility absolute-center {
   @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
 }
 
+@utility special-font {
+  font-family: "Zentry";
+  font-feature-settings: "ss01" on;
+}
+
+.mask-clip-path {
+  clip-path: circle(6.1% at 50% 50%);
+}
+
+.about-image {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 20;
+  height: 60vh;
+  width: 24rem; /* equivale a w-96 de Tailwind */
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 1.5rem; /* equivale a rounded-3xl */
+  transform-origin: center;
+}
+
+/* Responsive para md: (768px) */
+@media (min-width: 768px) {
+  .about-image {
+    width: 30vw;
+  }
+}
 /* 
 @layer utilities {
   .nav-hover-btn {
@@ -74,10 +98,7 @@ body {
     @apply flex justify-center items-center;
   }
 
-  .special-font b {
-    font-family: "Zentry";
-    font-feature-settings: "ss01" on;
-  }
+  
 
   .hero-heading {
     @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
