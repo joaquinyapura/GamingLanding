@@ -25,7 +25,7 @@ export const About = () => {
 
   return (
     <section id="about" className="min-h-screen w-dvw">
-      <div className="relative mt-36 mb-6 flex flex-col items-center">
+      <div className="relative mt-36 flex flex-col items-center">
         <h2 className="font-general text-sm md:text-lg">Welcome players</h2>
         <div className="mt-5 text-center text-4xl uppercase leading-0.4 md:text-[6rem] px-2 font-zentry font-black">
           Discover The W<b>O</b>rld largest shared aventure in Argentina
